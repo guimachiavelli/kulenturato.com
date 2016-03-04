@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Courier, 'Courier New', monospace;
+    box-sizing: border-box;
+}
+
+a {
+    color: black;
+}
+
+.site-header, .site-footer {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.site-nav {
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    display: table;
+    padding-left: 7.5%;
+    z-index: 1;
+}
+
+.nav-items {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.site-footer {
+    bottom: 0;
+}
+
+.site-content {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.pages {
+    height: 100%;
+}
+
+.page {
+    height: 100%;
+    display: table;
+    table-layout: fixed;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.page__content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.site-name {
+    font-size: x-large;
+    letter-spacing: 1.5em;
+    text-transform: uppercase;
+    padding: 1.25em 0;
+    margin-left: 1.25em;
+}
+
+.nav-item {
+    margin-bottom: 0.5em;
+}
+
+.nav-item__link {
+    text-transform: lowercase;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.nav-item__link--active {
+    border-bottom: 1px solid black;
+}
+
+.nav-item__link--active:hover {
+    border: 0;
+}
+
+.nav-item__link:hover {
+    border-bottom: 1px solid black;
+}
+
+.page__content p {
+    margin-bottom: 1em;
+}
+
+.page--tapestry {
+    width: 100%;
+}
+
+.page--tapestry .page__content {
+    overflow-x: scroll;
+}
+
+.tapestry {
+    width: 75%;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+.tapestry-item {
+    display: inline-block;
+    width: 100%;
+    padding: 0 15%;
+}
+
+.tapestry-item:last-child {
+    /*margin-right: 50%;*/
+}
+
+
+.tapestry-item__image-container {
+    width: 100%;
+    height: 0;
+    padding-top: 66.43%;
+    position: relative;
+    font-size: medium;
+    margin-bottom: 2em;
+}
+
+.tapestry-item__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tapestry-item__caption {
+    font-size: medium;
+}
+
+.slider .page__content {
+    overflow: hidden;
+}
+
+.slider .tapestry {
+    transition: transform 450ms cubic-bezier(0, 0, 0.21, 1);
+    transform: translateX(-100%);
+}
+
+.slider .tapestry.no-animation {
+    transition: none !important;
+}
