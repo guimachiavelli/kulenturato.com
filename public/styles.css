@@ -16,6 +16,24 @@ body {
     box-sizing: border-box;
 }
 
+.scroller {
+    height: 100%;
+    overflow: auto;
+    scroll-snap-type: proximity;
+    scroll-snap-destination: 100% 0;
+    scroll-snap-points-y: repeat(100%);
+
+  -webkit-scroll-snap-points-y: repeat(100%);
+      -ms-scroll-snap-points-y: repeat(100%);
+          scroll-snap-points-y: repeat(100%);
+  -webkit-scroll-snap-type: proximity;
+      -ms-scroll-snap-type: proximity;
+          scroll-snap-type: proximity;
+  -webkit-scroll-snap-destination: 100% 0%;
+      -ms-scroll-snap-destination: 100% 0%;
+          scroll-snap-destination: 100% 0%;
+}
+
 a {
     color: black;
 }
