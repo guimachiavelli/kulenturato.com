@@ -145,6 +145,19 @@ a {
 .page__content p {
     word-wrap: break-word;
     margin-bottom: 1em;
+    font-size: small;
+}
+
+@media (max-height: 415px) {
+    .page__content p {
+        font-size: x-small;
+    }
+}
+
+@media (min-width: 576px) and (min-height: 415px) {
+    .page__content p {
+        font-size: medium;
+    }
 }
 
 .page--tapestry {
