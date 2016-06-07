@@ -6,7 +6,7 @@ resizeImages() {
 
     for img in $imgs
     do
-        convert "$img" -resize 1000x1000 ./public/imgs/$i.jpg
+        convert "$img" -resize 1000x1000 -quality 80 ./public/imgs/$i.jpg
         ((i++))
     done
 }
