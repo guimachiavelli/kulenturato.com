@@ -1,0 +1,9 @@
+title: Tapestries
+template: tapestries
+pages:
+  template: tapestry
+files: false
+fields:
+  title:
+    label: Title
+    type:  text

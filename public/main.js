@@ -5,6 +5,7 @@
         this.el = el;
         this.slides = this.el.querySelectorAll('.tapestry-item');
         this.slideContainer = this.el.querySelector('.tapestry');
+        this.slider = this.el.querySelector('.slider-el');
 
         this.index = 0;
         this.interval = 5000;
@@ -31,12 +32,42 @@
 
         this.slides = this.el.querySelectorAll('.tapestry-item');
         this.numberOfSlides = this.slides.length;
+        this.slider.appendChild(this.buttons());
     };
 
-    Slideshow.prototype.slide = function() {
-        this.index += 1;
+    Slideshow.prototype.buttons = function() {
+        var buttonContainer, nextButton, previousButton;
 
-        if (this.index > this.originalNumberOfSlides * 2) {
+        buttonContainer = document.createElement('div');
+        buttonContainer.className = 'tapestry-nav';
+
+        nextButton = document.createElement('button');
+        nextButton.className = 'tapestry-nav__button tapestry-nav__button--next';
+        nextButton.innerHTML = '>';
+        nextButton.type = 'button';
+        nextButton.addEventListener('click', this.slide.bind(this, 1));
+
+        previousButton = document.createElement('button');
+        previousButton.className = 'tapestry-nav__button tapestry-nav__button--previous';
+        previousButton.innerHTML = '>';
+        previousButton.type = 'button';
+        previousButton.addEventListener('click', this.slide.bind(this, -1));
+
+        buttonContainer.appendChild(nextButton);
+        buttonContainer.appendChild(previousButton);
+
+        this.nextButton = nextButton;
+        this.previousButton = previousButton;
+
+        return buttonContainer;
+    };
+
+    Slideshow.prototype.slide = function(direction) {
+        direction = direction || 1;
+
+        this.index += direction;
+
+        if (this.index > this.originalNumberOfSlides * 2 || this.index < 2) {
             this.resetSlide();
             setTimeout(this.slide.bind(this), 20);
             return;
@@ -44,22 +75,25 @@
 
         this.go(this.index);
 
-        setTimeout(this.slide.bind(this), this.interval);
+        //setTimeout(this.slide.bind(this), this.interval);
     };
 
     Slideshow.prototype.go = function(index) {
         var translate = (index * -100) + '%';
         this.slideContainer.style.transform = 'translateX(' + translate  + ')';
+        this.slideContainer.style.transform = 'translateX(' + translate  + ')';
     };
 
     Slideshow.prototype.resetSlide = function() {
-        var cachedClass = this.slideContainer.className;
+        var cachedClass, self;
+
+        cachedClass = this.slideContainer.className;
+        self = this;
 
         this.slideContainer.className += ' no-animation';
         this.index = this.originalNumberOfSlides;
         this.go(this.index);
 
-        var self = this;
         setTimeout(function(){
             self.slideContainer.className = cachedClass;
         }, 20);
@@ -93,7 +127,8 @@
 
     Navigation.prototype.onScroll = function() {
         var now, currentPage;
-        var now = new Date().getTime();
+
+        now = new Date().getTime();
 
         if (now - this.lastScroll < 100) {
             return;

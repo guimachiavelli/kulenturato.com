@@ -1,0 +1,14 @@
+title: Site
+fields:
+    title:
+        label: Title
+        type:  text
+    footertext:
+        label: Footer
+        type: text
+    description:
+        label: Description
+        type:  textarea
+    keywords:
+        label: Keywords
+        type:  tags
